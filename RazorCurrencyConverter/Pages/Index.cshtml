@@ -3,19 +3,16 @@
 @{
     ViewData["Title"] = "Home page";
 }
-
 <div style="background-color:cornflowerblue">
     <header class="text-center">
         <h1 class="display-4">Currency Converter</h1>
-        <h2>by @Model.FullName</h2>
+        <h2>by Sudath Nawagamuwage</h2>
     </header>
     <br/><br/>
     <form method="post" class="mx-auto" style="width:200px">
         <p class="col-mb-2">
             <label for="from">From Currency:</label>
             <input required type="text" class="form-control" value="GBP">
-            @*<input type="text" class="form-control" required ="true" placeholder="Full Name" asp-for="FullName">*@
-            @*<input type="text" class="form-control" name="name">*@
         </p>
         <p class="col-mb-4">
             <label for="to">To Currency:</label>
@@ -23,27 +20,15 @@
         </p>
         <p class="col-mb-4">
             <label for="amount">Converted Amount:</label>
-            <input required type="number" class="form-control" value="1">
+            <input min="0" step=" 0.01" asp-for="@Model.Amount" class="form-control" required type="number" class="form-control" value="1">
         </p>
 
-        <p class="col-mb-2">
-            <button type="submit" class="btn btn-success">Get Exchange Rate</button>
+        <p class="col-md-2">
+            @*<input min="0" step=" 0.01" asp-for="@Model.Amount" class="form-control" type="number" required />*@
+            <button type="submit" class="btn btn-success">Convert</button>
         </p>
         <p class="col-mb-12">
             @ViewData["Message"]
-
         </p>
-      </form>
-
-@*    <form method="post" class="text-left">
-        <div class="form-label">
-            <label for="Name" class="col-sm-2 form-control-plaintext">Name</label>
-            <input type="text" class="form-control" name="Name">
-       </div>
-        <div class="mb-3">
-            <label for="Email" class="form-label">Email</label>
-            <input type="text" class="form-control" name="Email"me">
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>*@
+    </form>
 </div>

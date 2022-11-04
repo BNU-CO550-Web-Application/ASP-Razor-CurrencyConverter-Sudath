@@ -8,36 +8,23 @@ namespace RazorCurrencyConverter.Pages
     public class IndexModel : PageModel
     {
         [BindProperty]
-
-        public string FullName { get; set; }
-
-        private readonly ILogger<IndexModel> _logger;
-
-        public IndexModel(ILogger<IndexModel> logger)
-        {
-            _logger = logger;
-        }
-
+               
+        public string? Amount { get; set; }
+        public const double RATE = 1.15;
         public void OnGet()
         {
-            FullName = "Sudath Namwagamuwage";
+            
         }
+        double result;
 
         public void OnPost()
-        {   
-            
-            if(String.IsNullOrWhiteSpace(FullName))
+        {
+            if (!String.IsNullOrWhiteSpace(Amount))
             {
-                ViewData["Message"] = "Name is missing!";
-                FullName = "Anonymous";
+                result = Convert.ToDouble(Amount) * RATE;
+                ViewData["Message"] = $"{Amount} ==> GBP is {result.ToString("0.00")} ==> EUR ";
             }
-            else
-            {
-                ViewData["Message"] = "Name is Registerd!";
-                //Register the user
-            }
-
+          
         }
-
     }
 }
